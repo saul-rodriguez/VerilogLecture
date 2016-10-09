@@ -1,0 +1,18 @@
+# read design
+read_verilog flipflop_sr.v
+hierarchy -check -top flipflop_sr
+
+# high-level synthesis
+proc; opt; fsm; opt; memory; opt
+
+# low-level synthesis
+techmap; opt
+
+# map to target architecture
+#dfflibmap -liberty osu018_stdcells.lib
+#abc -liberty osu018_stdcells.lib
+
+# split larger signals
+#splitnets -ports; opt
+
+show
